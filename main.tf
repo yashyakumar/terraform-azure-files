@@ -1,7 +1,7 @@
 resource "azurerm_network_interface" "test" {
   name                = "test-nic"
   location            = data.azurerm_platform_image.ubuntu.location
-  resource_group_name = data.azurerm_virtual_network.default.location
+  resource_group_name = data.azurerm_virtual_network.default.resource_group_name
 
   ip_configuration {
     name                          = "internal"
@@ -30,5 +30,11 @@ resource "azurerm_linux_virtual_machine" "test" {
     storage_account_type = "Standard_LRS"
   }
 
-  source_image_id = data.azurerm_platform_image.ubuntu.id
+  source_image_reference {
+    publisher = data.azurerm_platform_image.ubuntu.publisher
+    version = "latest"
+    offer = data.azurerm_platform_image.ubuntu.offer
+    sku = data.azurerm_platform_image.ubuntu.sku
+    
+  }
 }

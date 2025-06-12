@@ -14,7 +14,7 @@ resource "azurerm_linux_virtual_machine" "test" {
   name                = "test-machine"
   resource_group_name = data.azurerm_virtual_network.default.resource_group_name
   location            = data.azurerm_virtual_network.default.location
-  size                = "Standard_B1s"
+  size                = var.instance_type
   admin_username      = "adminuser"
   network_interface_ids = [
     azurerm_network_interface.test.id,

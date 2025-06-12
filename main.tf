@@ -22,7 +22,7 @@ resource "azurerm_linux_virtual_machine" "test" {
 
   admin_ssh_key {
     username   = "adminuser"
-    public_key = file("id_rsa.pub")
+    public_key = file("C:/Users/JYOTHI/Documents/test/terraform/id_rsa.pub")
   }
 
   os_disk {

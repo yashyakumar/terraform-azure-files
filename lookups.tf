@@ -27,3 +27,12 @@ output "virtual_network_id" {
 output "image_id" {
   value = data.azurerm_platform_image.ubuntu.id
 }
+
+output "resource_group_name" {
+  value = data.azurerm_virtual_network.default.resource_group_name
+  
+}
+
+output "location" {
+  value = data.azurerm_platform_image.ubuntu.location
+}

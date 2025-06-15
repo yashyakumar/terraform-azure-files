@@ -1,9 +1,12 @@
 output "az_instance_id" {
-  value = azurerm_linux_virtual_machine.test.id
+  value = azurerm_linux_virtual_machine.test
 }
 
 output "az_instance_ip" {
-    value = azurerm_linux_virtual_machine.test.public_ip_address
+    value = {
+        for i,vm in azurerm_linux_virtual_machine.test:
+        vm.name => vm.public_ip_address
+    }
   
 }
 
